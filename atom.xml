@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lixinnnnnn.github.io/"/>
-  <updated>2017-03-15T06:00:10.000Z</updated>
+  <updated>2017-05-02T05:38:44.000Z</updated>
   <id>http://lixinnnnnn.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://lixinnnnnn.github.io/2017/03/15/nginx%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"/>
     <id>http://lixinnnnnn.github.io/2017/03/15/nginx安装与配置/</id>
     <published>2017-03-15T05:53:31.000Z</published>
-    <updated>2017-03-15T06:00:10.000Z</updated>
+    <updated>2017-05-02T05:38:44.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="nginx安装与配置"><a href="#nginx安装与配置" class="headerlink" title="nginx安装与配置"></a>nginx安装与配置</h1><h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ul>
 <li>安装ngnix需要依赖三个包(附件中已下好)</li>
@@ -30,23 +30,13 @@
 </ul>
 <h2 id="安装openssl"><a href="#安装openssl" class="headerlink" title="安装openssl"></a>安装openssl</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">tar zvxf openssl-1.0.1t.tar.gz</div><div class="line">cd openssl-1.0.1t</div><div class="line">./config --prefix=/app/openssl-1.0.1t    (说明: --prefix:指定安装路径)</div><div class="line">make depend</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure>
 <p>环境变量配置:<br>①. vi /etc/profile  （注意权限 切换root账号:sudo su）<br>②.编辑文件 按I 进入编辑模式<br>③.在最后一行 添加 export PATH=$PATH:/app/openssl-1.0.1t/bin<br>④.esc 退出编辑模式<br>⑤.:wq 保存并推出<br>⑥.source /etc/profile<br>⑦.没报错的话 退出重新连接 openssl version可以看出是否成功</p>
-<h2 id="安装pcre"><a href="#安装pcre" class="headerlink" title="安装pcre"></a>安装pcre</h2>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">  tar zvxf pcre-8.38.tar.gz</div><div class="line">  cd pcre-8.38                    </div><div class="line">  ./configure --prefix=/app/pcre-8.38     (说明: --prefix:指定安装路径,并且想卸载只要删除这一个文件就行了)</div><div class="line">  make</div><div class="line">  make install </div><div class="line"> ``` </div><div class="line">如果configure报错：</div><div class="line">  configure: error: You need a C++ compiler for C++ support.</div><div class="line">则，需要用root安装：</div><div class="line">  apt-get install build-essential</div><div class="line">## 安装zlib</div></pre></td></tr></table></figure>
-<p>   tar zvxf zlib-1.2.8.tar.gz<br>   cd zlib-1.2.8<br>   ./configure –prefix=/app/zlib-1.2.8<br>   make<br>   make install<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">## 安装nginx</div></pre></td></tr></table></figure></p>
-<pre><code>tar zvxf nginx-1.10.0.tar.gz
-cd nginx-1.10.0
-./configure
---prefix=/app/nginx-1.10.0
---with-http_ssl_module              (安装ssl模块,支持https)
---with-pcre=../pcre-8.38            (注意:指向解压的源码目录)
---with-zlib=../zlib-1.2.8           (注意:指向解压的源码目录)
---with-openssl=../openssl-1.0.1t    (注意:指向解压的源码目录)
-(./configure为了方便观看,实际命令是无换行的,但是--前需要空格)
-make
-make install
-</code></pre>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">## 启动nginx:</div></pre></td></tr></table></figure>
-<p>  cd /app/nginx/sbin<br>  ./nginx<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">## 重启nginx：</div></pre></td></tr></table></figure></p>
-<p>  cd /app/nginx/sbin<br>  ./nginx -s reload<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">## 关闭nginx:</div></pre></td></tr></table></figure></p>
-<p>  kill -9 ‘cat /app/nginx/nginx.pid’<br>  或者<br>  ps -aux|grep nginx<br>  kill -9 xxx<br>  ```</p>
+<h2 id="安装pcre"><a href="#安装pcre" class="headerlink" title="安装pcre"></a>安装pcre</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">tar zvxf pcre-8.38.tar.gz</div><div class="line">cd pcre-8.38                    </div><div class="line">./configure --prefix=/app/pcre-8.38     (说明:prefix:指定安装路径,并且想卸载只要删除这一个文件就行了)</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure>
+<p>如果configure报错：<br>  configure: error: You need a C++ compiler for C++ support.<br>则，需要用root安装：<br>  apt-get install build-essential</p>
+<h2 id="安装zlib"><a href="#安装zlib" class="headerlink" title="安装zlib"></a>安装zlib</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">tar zvxf zlib-1.2.8.tar.gz</div><div class="line">cd zlib-1.2.8</div><div class="line">./configure --prefix=/app/zlib-1.2.8</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure>
+<h2 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">tar zvxf nginx-1.10.0.tar.gz</div><div class="line">cd nginx-1.10.0</div><div class="line">./configure</div><div class="line">--prefix=/app/nginx-1.10.0</div><div class="line">--with-http_ssl_module              (安装ssl模块,支持https)</div><div class="line">--with-pcre=../pcre-8.38            (注意:指向解压的源码目录)</div><div class="line">--with-zlib=../zlib-1.2.8           (注意:指向解压的源码目录)</div><div class="line">--with-openssl=../openssl-1.0.1t    (注意:指向解压的源码目录)</div><div class="line">(./configure为了方便观看,实际命令是无换行的,但是--前需要空格)</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure>
+<h2 id="启动nginx"><a href="#启动nginx" class="headerlink" title="启动nginx:"></a>启动nginx:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /app/nginx/sbin</div><div class="line">./nginx</div></pre></td></tr></table></figure>
+<h2 id="重启nginx："><a href="#重启nginx：" class="headerlink" title="重启nginx："></a>重启nginx：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /app/nginx/sbin</div><div class="line">./nginx -s reload</div></pre></td></tr></table></figure>
+<h2 id="关闭nginx"><a href="#关闭nginx" class="headerlink" title="关闭nginx:"></a>关闭nginx:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">kill -9 &apos;cat /app/nginx/nginx.pid&apos;</div><div class="line">或者</div><div class="line">ps -aux|grep nginx</div><div class="line">kill -9 xxx</div></pre></td></tr></table></figure>
 <h2 id="nginx配置说明"><a href="#nginx配置说明" class="headerlink" title="nginx配置说明"></a>nginx配置说明</h2><p>见<a href="http://nginx.org/en/docs/http/ngx_http_proxy_module.html" target="_blank" rel="external">nignx配置文档</a></p>
 <p>转载请注明出处 <a href="http://lixinnnnnn.github.io/2017/03/15/nginx安装与配置/">http://lixinnnnnn.github.io/2017/03/15/nginx安装与配置/</a> </p>
 ]]></content>
