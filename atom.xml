@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lixinnnnnn.github.io/"/>
-  <updated>2017-05-02T05:38:44.000Z</updated>
+  <updated>2017-05-02T08:42:42.000Z</updated>
   <id>http://lixinnnnnn.github.io/</id>
   
   <author>
@@ -14,6 +14,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>solr6教程</title>
+    <link href="http://lixinnnnnn.github.io/2017/05/02/solr6%E6%95%99%E7%A8%8B/"/>
+    <id>http://lixinnnnnn.github.io/2017/05/02/solr6教程/</id>
+    <published>2017-05-02T05:41:06.000Z</published>
+    <updated>2017-05-02T08:42:42.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>安装配置链接: <a href="http://www.jfinal.com/share/62" target="_blank" rel="external">http://www.jfinal.com/share/62</a><br>教程链接： <a href="http://www.cnblogs.com/zhuxiaojie/p/5764680.html#autoid-2-11-0" target="_blank" rel="external">http://www.cnblogs.com/zhuxiaojie/p/5764680.html#autoid-2-11-0</a><br>待续……</p>
+<p>转载请注明出处 <a href="http://lixinnnnnn.github.io/2017/05/02/solr6教程/">http://lixinnnnnn.github.io/2017/05/02/solr6教程/</a> </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h2&gt;&lt;p&gt;安装配置链接: &lt;a href=&quot;http://www.jfinal.com/share/62&quot; target=&quot;_blan
+    
+    </summary>
+    
+    
+      <category term="study" scheme="http://lixinnnnnn.github.io/tags/study/"/>
+    
+  </entry>
   
   <entry>
     <title>nginx安装与配置</title>
