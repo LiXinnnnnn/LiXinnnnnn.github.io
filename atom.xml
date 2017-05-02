@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>localhost</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://lixinnnnnn.github.io/"/>
+  <updated>2017-03-15T06:00:10.000Z</updated>
+  <id>http://lixinnnnnn.github.io/</id>
+  
+  <author>
+    <name>lixin</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>nginx安装与配置</title>
+    <link href="http://lixinnnnnn.github.io/2017/03/15/nginx%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"/>
+    <id>http://lixinnnnnn.github.io/2017/03/15/nginx安装与配置/</id>
+    <published>2017-03-15T05:53:31.000Z</published>
+    <updated>2017-03-15T06:00:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="nginx安装与配置"><a href="#nginx安装与配置" class="headerlink" title="nginx安装与配置"></a>nginx安装与配置</h1><h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ul>
+<li>安装ngnix需要依赖三个包(附件中已下好)</li>
+<li>a.gzip模块需要 zlib库 <a href="http://www.zlib.net/" target="_blank" rel="external">zlib-1.2.8.tar.gz</a></li>
+<li>b.rewrite模块需要 pcre库<a href="http://www.pcre.org/" target="_blank" rel="external">pcre-8.38.tar.gz</a> </li>
+<li>c.ssl需要openssl库<a href="http://www.openssl.org/" target="_blank" rel="external">openssl-1.0.1t.tar.gz</a> </li>
+</ul>
+<h2 id="安装openssl"><a href="#安装openssl" class="headerlink" title="安装openssl"></a>安装openssl</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">tar zvxf openssl-1.0.1t.tar.gz</div><div class="line">cd openssl-1.0.1t</div><div class="line">./config --prefix=/app/openssl-1.0.1t    (说明: --prefix:指定安装路径)</div><div class="line">make depend</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure>
+<p>环境变量配置:<br>①. vi /etc/profile  （注意权限 切换root账号:sudo su）<br>②.编辑文件 按I 进入编辑模式<br>③.在最后一行 添加 export PATH=$PATH:/app/openssl-1.0.1t/bin<br>④.esc 退出编辑模式<br>⑤.:wq 保存并推出<br>⑥.source /etc/profile<br>⑦.没报错的话 退出重新连接 openssl version可以看出是否成功</p>
+<h2 id="安装pcre"><a href="#安装pcre" class="headerlink" title="安装pcre"></a>安装pcre</h2>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">  tar zvxf pcre-8.38.tar.gz</div><div class="line">  cd pcre-8.38                    </div><div class="line">  ./configure --prefix=/app/pcre-8.38     (说明: --prefix:指定安装路径,并且想卸载只要删除这一个文件就行了)</div><div class="line">  make</div><div class="line">  make install </div><div class="line"> ``` </div><div class="line">如果configure报错：</div><div class="line">  configure: error: You need a C++ compiler for C++ support.</div><div class="line">则，需要用root安装：</div><div class="line">  apt-get install build-essential</div><div class="line">## 安装zlib</div></pre></td></tr></table></figure>
+<p>   tar zvxf zlib-1.2.8.tar.gz<br>   cd zlib-1.2.8<br>   ./configure –prefix=/app/zlib-1.2.8<br>   make<br>   make install<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">## 安装nginx</div></pre></td></tr></table></figure></p>
+<pre><code>tar zvxf nginx-1.10.0.tar.gz
+cd nginx-1.10.0
+./configure
+--prefix=/app/nginx-1.10.0
+--with-http_ssl_module              (安装ssl模块,支持https)
+--with-pcre=../pcre-8.38            (注意:指向解压的源码目录)
+--with-zlib=../zlib-1.2.8           (注意:指向解压的源码目录)
+--with-openssl=../openssl-1.0.1t    (注意:指向解压的源码目录)
+(./configure为了方便观看,实际命令是无换行的,但是--前需要空格)
+make
+make install
+</code></pre>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">## 启动nginx:</div></pre></td></tr></table></figure>
+<p>  cd /app/nginx/sbin<br>  ./nginx<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">## 重启nginx：</div></pre></td></tr></table></figure></p>
+<p>  cd /app/nginx/sbin<br>  ./nginx -s reload<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">## 关闭nginx:</div></pre></td></tr></table></figure></p>
+<p>  kill -9 ‘cat /app/nginx/nginx.pid’<br>  或者<br>  ps -aux|grep nginx<br>  kill -9 xxx<br>  ```</p>
+<h2 id="nginx配置说明"><a href="#nginx配置说明" class="headerlink" title="nginx配置说明"></a>nginx配置说明</h2><p>见<a href="http://nginx.org/en/docs/http/ngx_http_proxy_module.html" target="_blank" rel="external">nignx配置文档</a></p>
+<p>转载请注明出处 <a href="http://lixinnnnnn.github.io/2017/03/15/nginx安装与配置/">http://lixinnnnnn.github.io/2017/03/15/nginx安装与配置/</a> </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;nginx安装与配置&quot;&gt;&lt;a href=&quot;#nginx安装与配置&quot; class=&quot;headerlink&quot; title=&quot;nginx安装与配置&quot;&gt;&lt;/a&gt;nginx安装与配置&lt;/h1&gt;&lt;h2 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerli
+    
+    </summary>
+    
+      <category term="linux" scheme="http://lixinnnnnn.github.io/categories/linux/"/>
+    
+    
+      <category term="nginx" scheme="http://lixinnnnnn.github.io/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nfs安装与配置</title>
+    <link href="http://lixinnnnnn.github.io/2017/03/15/nfs%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"/>
+    <id>http://lixinnnnnn.github.io/2017/03/15/nfs安装与配置/</id>
+    <published>2017-03-15T05:47:00.000Z</published>
+    <updated>2017-03-15T05:51:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="nfs服务器安装软件："><a href="#nfs服务器安装软件：" class="headerlink" title="nfs服务器安装软件："></a>nfs服务器安装软件：</h3><p>  sudo apt-get install nfs-kernel-server<br>  (安装nfs-kernel-server时，apt会自动安装nfs-common和rpcbind)</p>
+<h3 id="nfs客户端安装软件："><a href="#nfs客户端安装软件：" class="headerlink" title="nfs客户端安装软件："></a>nfs客户端安装软件：</h3><p>  sudo apt-get install nfs-common<br>  (安装nfs-common时，apt会自动安装rpcbind)</p>
+<h3 id="nfs服务端配置："><a href="#nfs服务端配置：" class="headerlink" title="nfs服务端配置："></a>nfs服务端配置：</h3><p>  sudo vi /etc/exports<br>  添加行：<br>  /app/nfs/ota-package 172.16.91.25(rw,sync,no_root_squash,no_subtree_check)</p>
+<h3 id="nfs服务端启动："><a href="#nfs服务端启动：" class="headerlink" title="nfs服务端启动："></a>nfs服务端启动：</h3><p>  sudo service portmap restart</p>
+<h3 id="nfs客户端执行："><a href="#nfs客户端执行：" class="headerlink" title="nfs客户端执行："></a>nfs客户端执行：</h3><p>  sudo mount 172.16.22.22:/app/nfs/ota-packages /app/webContent/ota-packages</p>
+<p>客户端重启后，需要重新运行上面的mount命令；重新运行，则客户端文件夹内容将被主服务器文件夹内容覆盖；所以建议源文件夹作为服务端。<br>nfs源文件在服务器端，如果设计大量读取请求，则必须让请求直接访问nfs服务器端，而不是访问nfs客户端。所以建议下载服务器端作为服务器端。</p>
+<h3 id="查询本机所有mount信息："><a href="#查询本机所有mount信息：" class="headerlink" title="查询本机所有mount信息："></a>查询本机所有mount信息：</h3><p>  mount</p>
+<p>转载请注明出处 <a href="http://lixinnnnnn.github.io/2017/03/15/nfs安装与配置/">http://lixinnnnnn.github.io/2017/03/15/nfs安装与配置/</a> </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;nfs服务器安装软件：&quot;&gt;&lt;a href=&quot;#nfs服务器安装软件：&quot; class=&quot;headerlink&quot; title=&quot;nfs服务器安装软件：&quot;&gt;&lt;/a&gt;nfs服务器安装软件：&lt;/h3&gt;&lt;p&gt;  sudo apt-get install nfs-kernel-
+    
+    </summary>
+    
+      <category term="linux" scheme="http://lixinnnnnn.github.io/categories/linux/"/>
+    
+    
+      <category term="nfs" scheme="http://lixinnnnnn.github.io/tags/nfs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>apache安装</title>
+    <link href="http://lixinnnnnn.github.io/2017/03/15/apache%E5%AE%89%E8%A3%85/"/>
+    <id>http://lixinnnnnn.github.io/2017/03/15/apache安装/</id>
+    <published>2017-03-15T05:41:05.000Z</published>
+    <updated>2017-03-15T05:47:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="linux-环境下apache服务器的安装"><a href="#linux-环境下apache服务器的安装" class="headerlink" title="linux 环境下apache服务器的安装"></a>linux 环境下apache服务器的安装</h1><h2 id="1-版本"><a href="#1-版本" class="headerlink" title="1 版本"></a>1 版本</h2><p>2.4.18</p>
+<h2 id="2-安装包准备"><a href="#2-安装包准备" class="headerlink" title="2 安装包准备"></a>2 安装包准备</h2><ul>
+<li>pcre-8.37.tar.gz 、</li>
+<li>apr-1.5.2.tar、</li>
+<li>apr-util-1.5.4.tar.gz</li>
+<li>httpd-2.4.18.tar<br>说明：httpd-2.4.18.tar为apache安装包，另外三个为依赖包。<h2 id="3-步骤"><a href="#3-步骤" class="headerlink" title="3 步骤"></a>3 步骤</h2><h3 id="3-1-apache-配置，APR依赖缺失，出现error"><a href="#3-1-apache-配置，APR依赖缺失，出现error" class="headerlink" title="3.1  apache 配置，APR依赖缺失，出现error"></a>3.1  apache 配置，APR依赖缺失，出现error</h3>otauser@OTA:~/httpd-2.4.18$ ./configure –prefix=/app/apache-2.4.18<br>configure: error: APR not found.  Please read the documentation.<h3 id="3-2配置apache依赖包-apr-1-5-2"><a href="#3-2配置apache依赖包-apr-1-5-2" class="headerlink" title="3.2配置apache依赖包 apr-1.5.2"></a>3.2配置apache依赖包 apr-1.5.2</h3>otauser@OTA:~$ cd apr-1.5.2/<br>otauser@OTA:~/apr-1.5.2$ ./configure –prefix=/app/apr-1.5.2<br>otauser@OTA:~/apr-1.5.2$ make<br>otauser@OTA:~/apr-1.5.2$ make install<h3 id="3-3-apache配置中引入依赖包apr-1-5-2，APR-util依赖缺失，出现error"><a href="#3-3-apache配置中引入依赖包apr-1-5-2，APR-util依赖缺失，出现error" class="headerlink" title="3.3 apache配置中引入依赖包apr-1.5.2，APR-util依赖缺失，出现error"></a>3.3 apache配置中引入依赖包apr-1.5.2，APR-util依赖缺失，出现error</h3>otauser@OTA:~/httpd-2.4.18$ ./configure –prefix=/app/apache-2.4.18 –with-apr=/app/apr-1.5.2/<br>configure: error: APR-util not found.  Please read the documentation.<h3 id="3-4-配置apr-1-5-2-的依赖包apr-util-1-5-4"><a href="#3-4-配置apr-1-5-2-的依赖包apr-util-1-5-4" class="headerlink" title="3.4 配置apr-1.5.2 的依赖包apr-util-1.5.4"></a>3.4 配置apr-1.5.2 的依赖包apr-util-1.5.4</h3></li>
+</ul>
+<p>otauser@OTA:~/apr-util-1.5.4$ ./configure –prefix=/app/apr-util-1.5.4 -with-apr=/app/apr-1.5.2/bin/apr-1-config<br>otauser@OTA:~/apr-util-1.5.4$ make<br>otauser@OTA:~/apr-util-1.5.4$ make install</p>
+<h3 id="3-5-引入依赖包-apr-util-1-5-4"><a href="#3-5-引入依赖包-apr-util-1-5-4" class="headerlink" title="3.5 引入依赖包 apr-util-1.5.4"></a>3.5 引入依赖包 apr-util-1.5.4</h3><p>otauser@OTA:~/httpd-2.4.18$ ./configure –prefix=/app/apache-2.4.18 –with-apr=/app/apr-1.5.2/ –with-apr-util=/app/apr-util-1.5.4/<br>configure: error: pcre-config for libpcre not found. PCRE is required and available from <a href="http://pcre.org/" target="_blank" rel="external">http://pcre.org/</a></p>
+<h3 id="3-6-如果出现以下error，执行步骤3-7-否则执行步骤3-8"><a href="#3-6-如果出现以下error，执行步骤3-7-否则执行步骤3-8" class="headerlink" title="3.6 如果出现以下error，执行步骤3.7,否则执行步骤3.8"></a>3.6 如果出现以下error，执行步骤3.7,否则执行步骤3.8</h3><p>otauser@OTA:~/pcre-8.37$ ./configure –prefix=/app/pcre-8.37<br>configure: error: You need a C++ compiler for C++ support.</p>
+<h3 id="3-7-切换到root-用户执行以下命令"><a href="#3-7-切换到root-用户执行以下命令" class="headerlink" title="3.7 切换到root 用户执行以下命令"></a>3.7 切换到root 用户执行以下命令</h3><p>sudo su<br>root@OTA:/home/otauser# apt-get install build-essential</p>
+<h3 id="3-8-配置依赖包-pcre-8-37"><a href="#3-8-配置依赖包-pcre-8-37" class="headerlink" title="3.8. 配置依赖包 pcre-8.37"></a>3.8. 配置依赖包 pcre-8.37</h3><p>otauser@OTA:~/pcre-8.37$ ./configure –prefix=/app/pcre-8.37 </p>
+<p>otauser@OTA:~/pcre-8.37$ make</p>
+<p>otauser@OTA:~/pcre-8.37$ make install</p>
+<h3 id="3-9安装成功"><a href="#3-9安装成功" class="headerlink" title="3.9安装成功"></a>3.9安装成功</h3><p>otauser@OTA:~/httpd-2.4.18$ ./configure –prefix=/app/apache-2.4.18 –with-apr=/app/apr-1.5.2/ –with-apr-util=/app/apr-util-1.5.4/ –with-pcre=/app/pcre-8.37<br>otauser@OTA:~/httpd-2.4.18$ make<br>otauser@OTA:~/httpd-2.4.18$ make install</p>
+<h3 id="3-10启动、关闭apache-的命令"><a href="#3-10启动、关闭apache-的命令" class="headerlink" title="3.10启动、关闭apache 的命令"></a>3.10启动、关闭apache 的命令</h3><p>/app/apache-2.4.18/bin/apachectl start<br>/app/apache-2.4.18/bin/apachectl stop</p>
+<p>转载请注明出处 <a href="http://lixinnnnnn.github.io/2017/03/15/apache安装/">http://lixinnnnnn.github.io/2017/03/15/apache安装/</a> </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;linux-环境下apache服务器的安装&quot;&gt;&lt;a href=&quot;#linux-环境下apache服务器的安装&quot; class=&quot;headerlink&quot; title=&quot;linux 环境下apache服务器的安装&quot;&gt;&lt;/a&gt;linux 环境下apache服务器的安装&lt;/
+    
+    </summary>
+    
+      <category term="linux" scheme="http://lixinnnnnn.github.io/categories/linux/"/>
+    
+    
+      <category term="apache" scheme="http://lixinnnnnn.github.io/tags/apache/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>jdk安装</title>
+    <link href="http://lixinnnnnn.github.io/2017/03/15/jdk%E5%AE%89%E8%A3%85/"/>
+    <id>http://lixinnnnnn.github.io/2017/03/15/jdk安装/</id>
+    <published>2017-03-15T05:38:41.000Z</published>
+    <updated>2017-03-15T05:47:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="jdk安装"><a href="#jdk安装" class="headerlink" title="jdk安装"></a>jdk安装</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">otauser@OTA:~$ tar zxf jdk-8u73-linux-x64.gz</div><div class="line">otauser@OTA:~$ cd /app</div><div class="line">otauser@OTA:/app$ cp -r /home/otauser/jdk1.8.0_73/ .</div><div class="line"></div><div class="line">otauser@OTA:/app$ sudo su</div><div class="line">root@OTA:/app$ vi /etc/profile</div><div class="line"></div><div class="line"># java env</div><div class="line">vi /etc/profile</div><div class="line">export JAVA_HOME=/app/jdk1.8.0_73</div><div class="line">export JRE_HOME=/app/jdk1.8.0_73/jre</div><div class="line">export PATH=$PATH:/app/jdk1.8.0_73/bin</div><div class="line">export CLASSPATH=./:/app/jdk1.8.0_73/lib:/app/jdk1.8.0_73/jre/lib</div><div class="line">source /etc/profile</div></pre></td></tr></table></figure>
+<p>转载请注明出处 <a href="http://lixinnnnnn.github.io/2017/03/15/jdk安装/">http://lixinnnnnn.github.io/2017/03/15/jdk安装/</a> </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;jdk安装&quot;&gt;&lt;a href=&quot;#jdk安装&quot; class=&quot;headerlink&quot; title=&quot;jdk安装&quot;&gt;&lt;/a&gt;jdk安装&lt;/h1&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;
+    
+    </summary>
+    
+      <category term="linux" scheme="http://lixinnnnnn.github.io/categories/linux/"/>
+    
+    
+      <category term="jdk" scheme="http://lixinnnnnn.github.io/tags/jdk/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>shell脚本语言</title>
+    <link href="http://lixinnnnnn.github.io/2017/03/15/shell%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80/"/>
+    <id>http://lixinnnnnn.github.io/2017/03/15/shell脚本语言/</id>
+    <published>2017-03-15T03:45:36.000Z</published>
+    <updated>2017-03-15T05:47:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>参考链接<a href="[http://c.biancheng.net/cpp/shell/|shell脚本教程]">http://c.biancheng.net/cpp/shell/|shell脚本教程</a></p>
+<h1 id="shell脚本语言学习"><a href="#shell脚本语言学习" class="headerlink" title="shell脚本语言学习"></a>shell脚本语言学习</h1><h2 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h2><p>新建.sh文件，并给文件授权x权限。打开文件并在文件中输入以下代码\<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">echo &quot;Hello World !&quot;</div></pre></td></tr></table></figure></p>
+<p>第一行表示用/bin/bash来编译执行此文件，第二行表示在窗口输出“hello world！”</p>
+<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><p>shell语言的语法和c语言类似，所以学起来还是比较容易理解。</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">i=1</div><div class="line">echo $i</div></pre></td></tr></table></figure>
+<ul>
+<li>变量定义用等于号，中间没有空格。</li>
+<li>变量以大小写字母开头。</li>
+<li>变量引用用${变量}，{}可省略，最好不要省略。<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2></li>
+<li>表达式和运算符之间要有空格，例如 2+2 是不对的，必须写成 2 + 2</li>
+<li>完整的表达式要被 <code> </code> 包含，注意这个字符不是常用的单引号，在 Esc 键下边</li>
+<li>bash不支持简单的数学运算，但是可以通过其他命令来实现，例如 awk 和 expr，expr 最常用<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">val=`expr 2 + 2`</div><div class="line">echo &quot;Total value : $val&quot;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><a href="http://c.biancheng.net/cpp/view/2736.html|shell运算符" target="_blank" rel="external">http://c.biancheng.net/cpp/view/2736.html|shell运算符</a></p>
+<h2 id="常用数据类型"><a href="#常用数据类型" class="headerlink" title="常用数据类型"></a>常用数据类型</h2><h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>最好用双引号，里面可以直接引用变量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> your_name=&quot;qinjx&quot;</div><div class="line">greeting=&quot;hello, &quot;$your_name&quot; !&quot;</div></pre></td></tr></table></figure></p>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>定义数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">array_name=(value0 value1 value2 value3)</div></pre></td></tr></table></figure></p>
+<p>读取数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NAME[0]=&quot;Zara&quot;</div></pre></td></tr></table></figure></p>
+<p>换取数组长度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">length=$&#123;#array_name[*]&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="常用语句"><a href="#常用语句" class="headerlink" title="常用语句"></a>常用语句</h2><h3 id="条件语句if"><a href="#条件语句if" class="headerlink" title="条件语句if"></a>条件语句if</h3><ul>
+<li>if … fi 语句；</li>
+<li>if … else … fi 语句；</li>
+<li>if … elif … else … fi 语句。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> if [ expression ]</div><div class="line">then</div><div class="line">   Statement</div><div class="line">fi</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注意：所有的[]和里面的表达式都需要空格[ $a == $b ]</p>
+<h3 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h3><p>for循环<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> for loop in 1 2 3 4 5</div><div class="line">do</div><div class="line">    echo &quot;The value is: $loop&quot;</div><div class="line">done</div></pre></td></tr></table></figure></p>
+<p>while循环<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> COUNTER=0</div><div class="line">while [ $COUNTER -lt 5 ]</div><div class="line">do</div><div class="line">    COUNTER=&apos;expr $COUNTER+1&apos;</div><div class="line">    echo $COUNTER</div><div class="line">done</div></pre></td></tr></table></figure></p>
+<p>until循环<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">a=0</div><div class="line">until [ ! $a -lt 10 ]</div><div class="line">do</div><div class="line">   echo $a</div><div class="line">   a=`expr $a + 1`</div><div class="line">done</div></pre></td></tr></table></figure></p>
+<p>跳出循环break，continue。这两个关键字后面可以跟数字，表示跳出基层循环。</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>函数定义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Hello () &#123;</div><div class="line">   echo &quot;hello&quot;</div><div class="line">   return 1</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>函数调用，直接写函数名字就行。函数返回值在调用该函数后通过 $? 来获得<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Hello</div><div class="line">ret=$?</div></pre></td></tr></table></figure></p>
+<p>函数参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">funWithParam()&#123;</div><div class="line">    echo &quot;第一个参数 $1 !&quot;</div><div class="line">    echo &quot;第二个参数 $2 !&quot;</div><div class="line">    echo &quot;第十个参数 $10 !&quot;</div><div class="line">    echo &quot;参数个数 $# !&quot;  </div><div class="line">    echo &quot;传递给函数的所有参数 $* !&quot;  # 传递给函数的所有参数</div><div class="line">&#125;</div><div class="line">funWithParam 1 2 3 4 5 6 7 8 9 10</div></pre></td></tr></table></figure></p>
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>向文件中写 command &gt; file ，command为命令，file为文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo &quot;1&quot; &gt; users</div></pre></td></tr></table></figure></p>
+<p>例子：定时删除多少天之前的文件<br>1、新建文件夹hello.sh并给予运行权限，并在其中输入以下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#！/bin/bash</div><div class="line">dir=/app/webContent/ems-admin/logs/</div><div class="line">find $&#123;dir&#125; -mtime +1 -type f|xargs rm -f</div></pre></td></tr></table></figure></p>
+<p>${dir}为路径<br>-mtime +1 是设置时间为1天前<br>-type f表示删除的是文件<br>“|”为管道，连接一个命令的标准输出和另一个命令的标准输入。<br>xargs可以通过管道传递参数，作用是将参数列表转换成小块分段传递给其他命令。<br>2、建立定时任务<br>使用命令crontab -e编辑定时任务。加上以下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">*/1 * * * * /app/test/shellcode/hello.sh</div></pre></td></tr></table></figure></p>
+<p>每分钟运行一次hello.sh文件。</p>
+<p>转载请注明出处 <a href="http://lixinnnnnn.github.io/2017/03/15/shell脚本语言/">http://lixinnnnnn.github.io/2017/03/15/shell脚本语言/</a> </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;参考链接&lt;a href=&quot;[http://c.biancheng.net/cpp/shell/|shell脚本教程]&quot;&gt;http://c.biancheng.net/cpp/shell/|shell脚本教程&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;shell脚本语言学习&quot;&gt;&lt;a h
+    
+    </summary>
+    
+      <category term="linux" scheme="http://lixinnnnnn.github.io/categories/linux/"/>
+    
+    
+      <category term="shell" scheme="http://lixinnnnnn.github.io/tags/shell/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>整理下用过的js插件</title>
+    <link href="http://lixinnnnnn.github.io/2016/12/29/%E6%95%B4%E7%90%86%E4%B8%8B%E7%94%A8%E8%BF%87%E7%9A%84js%E6%8F%92%E4%BB%B6/"/>
+    <id>http://lixinnnnnn.github.io/2016/12/29/整理下用过的js插件/</id>
+    <published>2016-12-29T13:21:05.000Z</published>
+    <updated>2017-03-15T03:44:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>[Toc]</p>
+<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>又是一个加班的夜晚，烦得慌。<br>忙里偷闲下用过的js插件吧。以后想用的时候就可以直接从这里拿了，也欢迎朋友们分享自己用过的插件。<br><img src="/post_images/201612291.png" alt="你的插件"></p>
+<h4 id="cookie插件"><a href="#cookie插件" class="headerlink" title="cookie插件"></a>cookie插件</h4><p>一款管理cookie的插件——jquery.cookie.js。使用非常简单。<br>cdn: <code>&lt;script src=&quot;http://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js&quot;&gt;&lt;/script&gt;</code><br>官网：<a href="http://plugins.jquery.com/cookie/" target="_blank" rel="external">http://plugins.jquery.com/cookie/</a></p>
+<h4 id="表单验证插件"><a href="#表单验证插件" class="headerlink" title="表单验证插件"></a>表单验证插件</h4><p>一款表单提交时验证的插件——jquery.validate.js，使用非常简单方便。其中内置了许多验证方法，也允许用户自定义方法，我现在一直再用。<br>cdn: <code>&lt;script src=&quot;http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js&quot;&gt;&lt;/script&gt;</code><br>官网：<a href="http://plugins.jquery.com/validate/" target="_blank" rel="external">http://plugins.jquery.com/validate/</a></p>
+<h4 id="上传文件插件"><a href="#上传文件插件" class="headerlink" title="上传文件插件"></a>上传文件插件</h4><p>一款上传文件的插件——uploadify.js。可以实现异步上传，使用实在是太简单，我都不想放例子。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    $(<span class="string">"#file_upload_1"</span>).uploadify(&#123;</div><div class="line">        <span class="attr">height</span>        : <span class="number">30</span>,</div><div class="line">        <span class="attr">swf</span>           : <span class="string">'/uploadify/uploadify.swf'</span>, <span class="comment">//直接用下载的，为上传文件的进度条</span></div><div class="line">        uploader      : <span class="string">'/uploadify/uploadify.php'</span>,<span class="comment">//接受文件的接口</span></div><div class="line">        width         : <span class="number">120</span></div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>下载地址： <a href="http://www.uploadify.com/download/" target="_blank" rel="external">http://www.uploadify.com/download/</a></p>
+<h4 id="在线编辑图片插件"><a href="#在线编辑图片插件" class="headerlink" title="在线编辑图片插件"></a>在线编辑图片插件</h4><p>一款可以编辑上传好的图片的插件——cropper.js。可以实现对上传上来的图片缩放，裁剪等等一系列操作，如果网站中有上传t头像这个功能，不妨用一下。比自己写要好得多。<br>官网： <a href="https://fengyuanchen.github.io/cropper/" target="_blank" rel="external">https://fengyuanchen.github.io/cropper/</a></p>
+<h4 id="图表插件"><a href="#图表插件" class="headerlink" title="图表插件"></a>图表插件</h4><p>图表插件多的数不过来，我在这安利一款highcharts。<br>官网： <a href="http://www.hcharts.cn/" target="_blank" rel="external">http://www.hcharts.cn/</a></p>
+<h4 id="富文本编辑器"><a href="#富文本编辑器" class="headerlink" title="富文本编辑器"></a>富文本编辑器</h4><p>富文本编辑器很多人用的百度的，我用过的一款ckeditor也很不错的。对每个功能都可以自定义。</p>
+<script src="//cdn.ckeditor.com/4.6.1/basic/ckeditor.js"></script>
+<textarea name="editor1" id="editor1" rows="10" cols="80">
+This is my textarea to be replaced with CKEditor.
+</textarea>
+ <script> CKEDITOR.replace( 'editor1' );</script>
+
+
+
+
+
+
+<p>转载请注明出处 <a href="http://lixinnnnnn.github.io/2016/12/29/整理下用过的js插件/">http://lixinnnnnn.github.io/2016/12/29/整理下用过的js插件/</a> </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;[Toc]&lt;/p&gt;
+&lt;h4 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h4&gt;&lt;p&gt;又是一个加班的夜晚，烦得慌。&lt;br&gt;忙里偷闲下用过的js插件吧。以后想用的时候就可以直接从这里拿了，也欢迎朋友们分
+    
+    </summary>
+    
+      <category term="js" scheme="http://lixinnnnnn.github.io/categories/js/"/>
+    
+    
+      <category term="js" scheme="http://lixinnnnnn.github.io/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>markdown语法简介</title>
+    <link href="http://lixinnnnnn.github.io/2016/12/21/markdown%E8%AF%AD%E6%B3%95%E7%AE%80%E4%BB%8B/"/>
+    <id>http://lixinnnnnn.github.io/2016/12/21/markdown语法简介/</id>
+    <published>2016-12-21T08:10:17.000Z</published>
+    <updated>2016-12-21T10:46:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>自己的博客是使用md语法书写的，学习使用起来也非常的方便快捷。趁上班之余，把md的语法记录一下，方便自己和他人查看（估计没有他人）。至于博客是怎么搭建起来的，我就不专门写篇文章了，如果有朋友搭建博客有问题的可以留言或直接联系我。</p>
+<hr>
+<h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>如果一段文字被定义为标题，只要在这段文字前加#号即可。总共六级标题，建议在井号后加一个空格，这是最标准的 Markdown 语法。<br><code>## 一级标题</code><br><code>## 二级标题</code><br><code>### 三级标题</code><br><img src="http://ww1.sinaimg.cn/large/6aee7dbbgw1effeaclhiyj20eh09cwez.jpg" alt="title"></p>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>列表的显示只需要在文字前加上 <code>-</code> 或 <code>*</code> 即可变为无序列表，有序列表则直接在文字前加<code>1.</code> <code>2.</code> <code>3.</code> 符号要和文字之间加上一个字符的空格。<br><img src="http://ww4.sinaimg.cn/large/6aee7dbbgw1effew5aftij20d80bz3yw.jpg" alt="title"></p>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>在文本前加入<code>&gt;</code>这种尖括号（大于号）即可</p>
+<blockquote>
+<p>例如这样</p>
+</blockquote>
+<p><img src="http://ww3.sinaimg.cn/large/6aee7dbbgw1effezhonxlj20e009c3yu.jpg" alt="title"></p>
+<h3 id="图片与链接"><a href="#图片与链接" class="headerlink" title="图片与链接"></a>图片与链接</h3><p>插入链接与插入图片的语法很像，区别在一个 <code>!</code>号。<br>链接：<code>[链接显示的文字](链接地址)</code> ，相当于<code>&lt;a href=&quot;链接地址&quot;&gt;链接显示的文字&lt;/a&gt;</code><br>图片：<code>![图像的替换文本](图像地址)</code> ，相当于<code>&lt;img src=&quot;图像地址&quot;  alt=&quot;图像的替换文本&quot; /&gt;</code><br>图片地址可以写相对路径，文章发布时需要将图片一起上传。更好的做法是将图片上传的云上，使用时直接引用链接即可。<br><img src="http://ww2.sinaimg.cn/large/6aee7dbbgw1efffa67voyj20ix0ctq3n.jpg" alt="title"></p>
+<h3 id="粗体与斜体"><a href="#粗体与斜体" class="headerlink" title="粗体与斜体"></a>粗体与斜体</h3><p>Markdown 的粗体和斜体也非常简单，用两个 <code>*</code> 包含一段文本就是粗体的语法，用一个 <code>*</code> 包含一段文本就是斜体的语法。<br>例如：<strong>这是粗体</strong>  <em>这是斜体</em><br><code>**这是粗体**  *这是斜体*</code></p>
+<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><p>表格比较复杂，还不如使用html标签简单。<br><figure class="highlight plain"><figcaption><span>Tables        | Are           | Cool  |</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">| ------------- |:-------------:| -----:|</div><div class="line">| col 3 is      | right-aligned | $1600 |</div><div class="line">| col 2 is      | centered      |   $12 |</div><div class="line">| zebra stripes | are neat      |    $1 |</div></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>Tables</th>
+<th style="text-align:center">Are</th>
+<th style="text-align:right">Cool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>col 3 is</td>
+<td style="text-align:center">right-aligned</td>
+<td style="text-align:right">$1600</td>
+</tr>
+<tr>
+<td>col 2 is</td>
+<td style="text-align:center">centered</td>
+<td style="text-align:right">$12</td>
+</tr>
+<tr>
+<td>zebra stripes</td>
+<td style="text-align:center">are neat</td>
+<td style="text-align:right">$1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p> 如果你是个程序猿，需要在文章里优雅的引用代码框，在Markdown下实现也非常简单，只需要用两个 ` 把中间的代码包裹起来。缩进用<code>tab</code>键。一段代码用```+语言名称进行标记。<br> 例如：<br> ``` java<br>public class HelloWorld(){<br>    private void print(String s){<br>        System.out.print(s);<br>    }<br>}<br>```<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> class <span class="title">HelloWorld</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(String s)</span></span>&#123;</div><div class="line">        System.out.print(s);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>分割线的语法只需要三个 <code>*</code> 号<br>转义字符\</p>
+<p>转载请注明出处 <a href="http://lixinnnnnn.github.io/2016/12/21/markdown语法简介/">http://lixinnnnnn.github.io/2016/12/21/markdown语法简介/</a> </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h3&gt;&lt;p&gt;自己的博客是使用md语法书写的，学习使用起来也非常的方便快捷。趁上班之余，把md的语法记录一下，方便自己和他人查看（估计没有
+    
+    </summary>
+    
+      <category term="study" scheme="http://lixinnnnnn.github.io/categories/study/"/>
+    
+    
+      <category term="markdown" scheme="http://lixinnnnnn.github.io/tags/markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hello world</title>
+    <link href="http://lixinnnnnn.github.io/2016/12/20/hello-world/"/>
+    <id>http://lixinnnnnn.github.io/2016/12/20/hello-world/</id>
+    <published>2016-12-20T07:54:47.000Z</published>
+    <updated>2016-12-21T02:26:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="老规矩"><a href="#老规矩" class="headerlink" title="老规矩"></a>老规矩</h3><blockquote>
+<p>先来一段hello world。</p>
+</blockquote>
+<h3 id="想说的话"><a href="#想说的话" class="headerlink" title="想说的话"></a>想说的话</h3><blockquote>
+<p>从没毕业的时候就开始想写博客，拖了好久。一方面是没有合适的博客系统，一方面是自己太懒。<br>刚毕业的时候，在公司正好有过一段空闲期，就摸索着用github+hexo建好了自己还挺喜欢的博客。后来也是时间太紧，忘记了这些事。<br>最近突发奇想又想开始写博客，希望自己能坚持下去。记录下自己的生活、学习和工作。</p>
+</blockquote>
+<h3 id="关于博客"><a href="#关于博客" class="headerlink" title="关于博客"></a>关于博客</h3><blockquote>
+<p>万事开头难，这个博客现在还在起步阶段，各种功能还没有加上，以后慢慢会加上。<br>还要特别感谢Yelee主题的制作者MOxFIVE ,以后主题的风格可能会换。<br>本博客的名称叫localhost，平时自己在做web项目的时候喜欢敲localhost而不是127.0.0.1,也算是以自己的习惯命名吧。</p>
+</blockquote>
+<p>转载请注明出处 <a href="http://lixinnnnnn.github.io/2016/12/20/hello-world/">http://lixinnnnnn.github.io/2016/12/20/hello-world/</a> </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;老规矩&quot;&gt;&lt;a href=&quot;#老规矩&quot; class=&quot;headerlink&quot; title=&quot;老规矩&quot;&gt;&lt;/a&gt;老规矩&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;先来一段hello world。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;想说的话&quot;&gt;&lt;a h
+    
+    </summary>
+    
+      <category term="hello world" scheme="http://lixinnnnnn.github.io/categories/hello-world/"/>
+    
+    
+      <category term="hello world" scheme="http://lixinnnnnn.github.io/tags/hello-world/"/>
+    
+  </entry>
+  
+</feed>

@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"><meta name="format-detection" content="telephone=no"><meta name="format-detection" content="email=no"><meta name="description" content="为了避免一切的结束,你拒绝了所有开始."><meta name="keywords" content="Hexo, Gruntjs, Nodejs, Reactjs, Vuejs"><title>nginx安装与配置 - localhost</title><link rel="stylesheet" href="/css/main_style.min.css"><link rel="stylesheet" href="/css/my_style.css"><link rel="stylesheet" href="/css/link.css"><link rel="icon" href="/my_set_images/icon.ico"></head><body><div class="post-header"><img class="background" src="/default_images/post_background.jpg"><div class="post-title"><h1 class="title">nginx安装与配置</h1><ul class="meta"><li><i class="icon icon-author"></i>lixin</li><li><i class="icon icon-clock"></i>4 Minutes</li><li><i class="icon icon-calendar"></i>2017年3月15日</li></ul></div></div><div class="article-content"><h1 id="nginx安装与配置"><a href="#nginx安装与配置" class="headerlink" title="nginx安装与配置"></a>nginx安装与配置</h1><h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ul>
+<li>安装ngnix需要依赖三个包(附件中已下好)</li>
+<li>a.gzip模块需要 zlib库 <a href="http://www.zlib.net/" target="_blank" rel="external">zlib-1.2.8.tar.gz</a></li>
+<li>b.rewrite模块需要 pcre库<a href="http://www.pcre.org/" target="_blank" rel="external">pcre-8.38.tar.gz</a> </li>
+<li>c.ssl需要openssl库<a href="http://www.openssl.org/" target="_blank" rel="external">openssl-1.0.1t.tar.gz</a> </li>
+</ul>
+<h2 id="安装openssl"><a href="#安装openssl" class="headerlink" title="安装openssl"></a>安装openssl</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">tar zvxf openssl-1.0.1t.tar.gz</div><div class="line">cd openssl-1.0.1t</div><div class="line">./config --prefix=/app/openssl-1.0.1t    (说明: --prefix:指定安装路径)</div><div class="line">make depend</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure>
+<p>环境变量配置:<br>①. vi /etc/profile  （注意权限 切换root账号:sudo su）<br>②.编辑文件 按I 进入编辑模式<br>③.在最后一行 添加 export PATH=$PATH:/app/openssl-1.0.1t/bin<br>④.esc 退出编辑模式<br>⑤.:wq 保存并推出<br>⑥.source /etc/profile<br>⑦.没报错的话 退出重新连接 openssl version可以看出是否成功</p>
+<h2 id="安装pcre"><a href="#安装pcre" class="headerlink" title="安装pcre"></a>安装pcre</h2>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">  tar zvxf pcre-8.38.tar.gz</div><div class="line">  cd pcre-8.38                    </div><div class="line">  ./configure --prefix=/app/pcre-8.38     (说明: --prefix:指定安装路径,并且想卸载只要删除这一个文件就行了)</div><div class="line">  make</div><div class="line">  make install </div><div class="line"> ``` </div><div class="line">如果configure报错：</div><div class="line">  configure: error: You need a C++ compiler for C++ support.</div><div class="line">则，需要用root安装：</div><div class="line">  apt-get install build-essential</div><div class="line">## 安装zlib</div></pre></td></tr></table></figure>
+<p>   tar zvxf zlib-1.2.8.tar.gz<br>   cd zlib-1.2.8<br>   ./configure –prefix=/app/zlib-1.2.8<br>   make<br>   make install<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">## 安装nginx</div></pre></td></tr></table></figure></p>
+<pre><code>tar zvxf nginx-1.10.0.tar.gz
+cd nginx-1.10.0
+./configure
+--prefix=/app/nginx-1.10.0
+--with-http_ssl_module              (安装ssl模块,支持https)
+--with-pcre=../pcre-8.38            (注意:指向解压的源码目录)
+--with-zlib=../zlib-1.2.8           (注意:指向解压的源码目录)
+--with-openssl=../openssl-1.0.1t    (注意:指向解压的源码目录)
+(./configure为了方便观看,实际命令是无换行的,但是--前需要空格)
+make
+make install
+</code></pre>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">## 启动nginx:</div></pre></td></tr></table></figure>
+<p>  cd /app/nginx/sbin<br>  ./nginx<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">## 重启nginx：</div></pre></td></tr></table></figure></p>
+<p>  cd /app/nginx/sbin<br>  ./nginx -s reload<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">## 关闭nginx:</div></pre></td></tr></table></figure></p>
+<p>  kill -9 ‘cat /app/nginx/nginx.pid’<br>  或者<br>  ps -aux|grep nginx<br>  kill -9 xxx<br>  ```</p>
+<h2 id="nginx配置说明"><a href="#nginx配置说明" class="headerlink" title="nginx配置说明"></a>nginx配置说明</h2><p>见<a href="http://nginx.org/en/docs/http/ngx_http_proxy_module.html" target="_blank" rel="external">nignx配置文档</a></p>
+<p>转载请注明出处 <a href="http://lixinnnnnn.github.io/2017/03/15/nginx安装与配置/">http://lixinnnnnn.github.io/2017/03/15/nginx安装与配置/</a> </p>
+</div><div class="article-meta"><div class="tags"><i class="icon icon-tag"></i><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">1</span></li></ul></div><div class="categories"><i class="icon icon-category"></i><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">5</span></li></ul></div></div><div class="article-comment"><div class="ds-thread" id="ds-thread" data-thread-key="cj26w91jq000bvoaq5ftj4fhi" data-title="nginx安装与配置" data-url="http://lixinnnnnn.github.io/2017/03/15/nginx安装与配置/" site-name="newasdfasdf"></div><script>var siteName = document.getElementById('ds-thread').getAttribute('site-name');
+var duoshuoQuery = {short_name: siteName};
+(function() {
+  var ds = document.createElement('script');
+  ds.type = 'text/javascript';ds.async = true;
+  ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  ds.charset = 'UTF-8';
+  (document.getElementsByTagName('head')[0] 
+  || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();</script></div><ul class="navication"><li class="home"><a href="/"><i class="icon icon-home"></i></a></li><li><a href="/2017/03/15/nfs安装与配置/"><i class="icon icon-arror-left"></i></a></li></ul><div class="page-footer"><div class="top"><ul class="social"><li><a href="https://github.com/LiXinnnnnn" title="GitHub" target="_blank"><i class="icon icon-github"></i></a></li><li><a href="mailto:823523036@qq.com" title="Email" target="_blank"><i class="icon icon-email"></i></a></li><li><a href="http://www.justli.xyz/post_images/code.jpg" title="WeChat" target="_blank"><i class="icon icon-wechat"></i></a></li></ul></div><div class="bottom"><p class="copyright">© 2017 localhost<br><small>POWER BY <a href="https://hexo.io" target="_blank">HEXO</a></small><small>, THEME BY <a href="https://github.com/BoizZ/hexo-theme-laughing" target="_blank">LAUGHING</a></small></p></div></div></body></html>

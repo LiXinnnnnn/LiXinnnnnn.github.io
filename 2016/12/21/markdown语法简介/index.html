@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"><meta name="format-detection" content="telephone=no"><meta name="format-detection" content="email=no"><meta name="description" content="为了避免一切的结束,你拒绝了所有开始."><meta name="keywords" content="Hexo, Gruntjs, Nodejs, Reactjs, Vuejs"><title>markdown语法简介 - localhost</title><link rel="stylesheet" href="/css/main_style.min.css"><link rel="stylesheet" href="/css/my_style.css"><link rel="stylesheet" href="/css/link.css"><link rel="icon" href="/my_set_images/icon.ico"></head><body><div class="post-header"><img class="background" src="/default_images/post_background.jpg"><div class="post-title"><h1 class="title">markdown语法简介</h1><ul class="meta"><li><i class="icon icon-author"></i>lixin</li><li><i class="icon icon-clock"></i>4 Minutes</li><li><i class="icon icon-calendar"></i>2016年12月21日</li></ul></div></div><div class="article-content"><h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>自己的博客是使用md语法书写的，学习使用起来也非常的方便快捷。趁上班之余，把md的语法记录一下，方便自己和他人查看（估计没有他人）。至于博客是怎么搭建起来的，我就不专门写篇文章了，如果有朋友搭建博客有问题的可以留言或直接联系我。</p>
+<hr>
+<h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>如果一段文字被定义为标题，只要在这段文字前加#号即可。总共六级标题，建议在井号后加一个空格，这是最标准的 Markdown 语法。<br><code>## 一级标题</code><br><code>## 二级标题</code><br><code>### 三级标题</code><br><img src="http://ww1.sinaimg.cn/large/6aee7dbbgw1effeaclhiyj20eh09cwez.jpg" alt="title"></p>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>列表的显示只需要在文字前加上 <code>-</code> 或 <code>*</code> 即可变为无序列表，有序列表则直接在文字前加<code>1.</code> <code>2.</code> <code>3.</code> 符号要和文字之间加上一个字符的空格。<br><img src="http://ww4.sinaimg.cn/large/6aee7dbbgw1effew5aftij20d80bz3yw.jpg" alt="title"></p>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>在文本前加入<code>&gt;</code>这种尖括号（大于号）即可</p>
+<blockquote>
+<p>例如这样</p>
+</blockquote>
+<p><img src="http://ww3.sinaimg.cn/large/6aee7dbbgw1effezhonxlj20e009c3yu.jpg" alt="title"></p>
+<h3 id="图片与链接"><a href="#图片与链接" class="headerlink" title="图片与链接"></a>图片与链接</h3><p>插入链接与插入图片的语法很像，区别在一个 <code>!</code>号。<br>链接：<code>[链接显示的文字](链接地址)</code> ，相当于<code>&lt;a href=&quot;链接地址&quot;&gt;链接显示的文字&lt;/a&gt;</code><br>图片：<code>![图像的替换文本](图像地址)</code> ，相当于<code>&lt;img src=&quot;图像地址&quot;  alt=&quot;图像的替换文本&quot; /&gt;</code><br>图片地址可以写相对路径，文章发布时需要将图片一起上传。更好的做法是将图片上传的云上，使用时直接引用链接即可。<br><img src="http://ww2.sinaimg.cn/large/6aee7dbbgw1efffa67voyj20ix0ctq3n.jpg" alt="title"></p>
+<h3 id="粗体与斜体"><a href="#粗体与斜体" class="headerlink" title="粗体与斜体"></a>粗体与斜体</h3><p>Markdown 的粗体和斜体也非常简单，用两个 <code>*</code> 包含一段文本就是粗体的语法，用一个 <code>*</code> 包含一段文本就是斜体的语法。<br>例如：<strong>这是粗体</strong>  <em>这是斜体</em><br><code>**这是粗体**  *这是斜体*</code></p>
+<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><p>表格比较复杂，还不如使用html标签简单。<br><figure class="highlight plain"><figcaption><span>Tables        | Are           | Cool  |</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">| ------------- |:-------------:| -----:|</div><div class="line">| col 3 is      | right-aligned | $1600 |</div><div class="line">| col 2 is      | centered      |   $12 |</div><div class="line">| zebra stripes | are neat      |    $1 |</div></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>Tables</th>
+<th style="text-align:center">Are</th>
+<th style="text-align:right">Cool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>col 3 is</td>
+<td style="text-align:center">right-aligned</td>
+<td style="text-align:right">$1600</td>
+</tr>
+<tr>
+<td>col 2 is</td>
+<td style="text-align:center">centered</td>
+<td style="text-align:right">$12</td>
+</tr>
+<tr>
+<td>zebra stripes</td>
+<td style="text-align:center">are neat</td>
+<td style="text-align:right">$1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p> 如果你是个程序猿，需要在文章里优雅的引用代码框，在Markdown下实现也非常简单，只需要用两个 ` 把中间的代码包裹起来。缩进用<code>tab</code>键。一段代码用```+语言名称进行标记。<br> 例如：<br> ``` java<br>public class HelloWorld(){<br>    private void print(String s){<br>        System.out.print(s);<br>    }<br>}<br>```<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> class <span class="title">HelloWorld</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(String s)</span></span>&#123;</div><div class="line">        System.out.print(s);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>分割线的语法只需要三个 <code>*</code> 号<br>转义字符\</p>
+<p>转载请注明出处 <a href="http://lixinnnnnn.github.io/2016/12/21/markdown语法简介/">http://lixinnnnnn.github.io/2016/12/21/markdown语法简介/</a> </p>
+</div><div class="article-meta"><div class="tags"><i class="icon icon-tag"></i><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li></ul></div><div class="categories"><i class="icon icon-category"></i><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/study/">study</a><span class="category-list-count">1</span></li></ul></div></div><div class="article-comment"><div class="ds-thread" id="ds-thread" data-thread-key="cj26w91jj0006voaq9usf7yh2" data-title="markdown语法简介" data-url="http://lixinnnnnn.github.io/2016/12/21/markdown语法简介/" site-name="newasdfasdf"></div><script>var siteName = document.getElementById('ds-thread').getAttribute('site-name');
+var duoshuoQuery = {short_name: siteName};
+(function() {
+  var ds = document.createElement('script');
+  ds.type = 'text/javascript';ds.async = true;
+  ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  ds.charset = 'UTF-8';
+  (document.getElementsByTagName('head')[0] 
+  || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();</script></div><ul class="navication"><li class="home"><a href="/"><i class="icon icon-home"></i></a></li><li><a href="/2016/12/20/hello-world/"><i class="icon icon-arror-left"></i></a></li><li><a href="/2016/12/29/整理下用过的js插件/"><i class="icon icon-arror-right"></i></a></li></ul><div class="page-footer"><div class="top"><ul class="social"><li><a href="https://github.com/LiXinnnnnn" title="GitHub" target="_blank"><i class="icon icon-github"></i></a></li><li><a href="mailto:823523036@qq.com" title="Email" target="_blank"><i class="icon icon-email"></i></a></li><li><a href="http://www.justli.xyz/post_images/code.jpg" title="WeChat" target="_blank"><i class="icon icon-wechat"></i></a></li></ul></div><div class="bottom"><p class="copyright">© 2017 localhost<br><small>POWER BY <a href="https://hexo.io" target="_blank">HEXO</a></small><small>, THEME BY <a href="https://github.com/BoizZ/hexo-theme-laughing" target="_blank">LAUGHING</a></small></p></div></div></body></html>
