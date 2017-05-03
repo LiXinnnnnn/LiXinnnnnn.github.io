@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://lixinnnnnn.github.io/"/>
+  <link href="http://www.justli.xyz/"/>
   <updated>2017-05-02T08:42:42.000Z</updated>
-  <id>http://lixinnnnnn.github.io/</id>
+  <id>http://www.justli.xyz/</id>
   
   <author>
     <name>lixin</name>
@@ -17,13 +17,13 @@
   
   <entry>
     <title>solr6教程</title>
-    <link href="http://lixinnnnnn.github.io/2017/05/02/solr6%E6%95%99%E7%A8%8B/"/>
-    <id>http://lixinnnnnn.github.io/2017/05/02/solr6教程/</id>
+    <link href="http://www.justli.xyz/2017/05/02/solr6%E6%95%99%E7%A8%8B/"/>
+    <id>http://www.justli.xyz/2017/05/02/solr6教程/</id>
     <published>2017-05-02T05:41:06.000Z</published>
     <updated>2017-05-02T08:42:42.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>安装配置链接: <a href="http://www.jfinal.com/share/62" target="_blank" rel="external">http://www.jfinal.com/share/62</a><br>教程链接： <a href="http://www.cnblogs.com/zhuxiaojie/p/5764680.html#autoid-2-11-0" target="_blank" rel="external">http://www.cnblogs.com/zhuxiaojie/p/5764680.html#autoid-2-11-0</a><br>待续……</p>
-<p>转载请注明出处 <a href="http://lixinnnnnn.github.io/2017/05/02/solr6教程/">http://lixinnnnnn.github.io/2017/05/02/solr6教程/</a> </p>
+<p>转载请注明出处 <a href="http://www.justli.xyz/2017/05/02/solr6教程/">http://www.justli.xyz/2017/05/02/solr6教程/</a> </p>
 ]]></content>
     
     <summary type="html">
@@ -33,14 +33,14 @@
     </summary>
     
     
-      <category term="study" scheme="http://lixinnnnnn.github.io/tags/study/"/>
+      <category term="study" scheme="http://www.justli.xyz/tags/study/"/>
     
   </entry>
   
   <entry>
     <title>nginx安装与配置</title>
-    <link href="http://lixinnnnnn.github.io/2017/03/15/nginx%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"/>
-    <id>http://lixinnnnnn.github.io/2017/03/15/nginx安装与配置/</id>
+    <link href="http://www.justli.xyz/2017/03/15/nginx%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"/>
+    <id>http://www.justli.xyz/2017/03/15/nginx安装与配置/</id>
     <published>2017-03-15T05:53:31.000Z</published>
     <updated>2017-05-02T05:38:44.000Z</updated>
     
@@ -60,7 +60,7 @@
 <h2 id="重启nginx："><a href="#重启nginx：" class="headerlink" title="重启nginx："></a>重启nginx：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /app/nginx/sbin</div><div class="line">./nginx -s reload</div></pre></td></tr></table></figure>
 <h2 id="关闭nginx"><a href="#关闭nginx" class="headerlink" title="关闭nginx:"></a>关闭nginx:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">kill -9 &apos;cat /app/nginx/nginx.pid&apos;</div><div class="line">或者</div><div class="line">ps -aux|grep nginx</div><div class="line">kill -9 xxx</div></pre></td></tr></table></figure>
 <h2 id="nginx配置说明"><a href="#nginx配置说明" class="headerlink" title="nginx配置说明"></a>nginx配置说明</h2><p>见<a href="http://nginx.org/en/docs/http/ngx_http_proxy_module.html" target="_blank" rel="external">nignx配置文档</a></p>
-<p>转载请注明出处 <a href="http://lixinnnnnn.github.io/2017/03/15/nginx安装与配置/">http://lixinnnnnn.github.io/2017/03/15/nginx安装与配置/</a> </p>
+<p>转载请注明出处 <a href="http://www.justli.xyz/2017/03/15/nginx安装与配置/">http://www.justli.xyz/2017/03/15/nginx安装与配置/</a> </p>
 ]]></content>
     
     <summary type="html">
@@ -69,17 +69,17 @@
     
     </summary>
     
-      <category term="linux" scheme="http://lixinnnnnn.github.io/categories/linux/"/>
+      <category term="linux" scheme="http://www.justli.xyz/categories/linux/"/>
     
     
-      <category term="nginx" scheme="http://lixinnnnnn.github.io/tags/nginx/"/>
+      <category term="nginx" scheme="http://www.justli.xyz/tags/nginx/"/>
     
   </entry>
   
   <entry>
     <title>nfs安装与配置</title>
-    <link href="http://lixinnnnnn.github.io/2017/03/15/nfs%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"/>
-    <id>http://lixinnnnnn.github.io/2017/03/15/nfs安装与配置/</id>
+    <link href="http://www.justli.xyz/2017/03/15/nfs%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"/>
+    <id>http://www.justli.xyz/2017/03/15/nfs安装与配置/</id>
     <published>2017-03-15T05:47:00.000Z</published>
     <updated>2017-03-15T05:51:44.000Z</updated>
     
@@ -90,7 +90,7 @@
 <h3 id="nfs客户端执行："><a href="#nfs客户端执行：" class="headerlink" title="nfs客户端执行："></a>nfs客户端执行：</h3><p>  sudo mount 172.16.22.22:/app/nfs/ota-packages /app/webContent/ota-packages</p>
 <p>客户端重启后，需要重新运行上面的mount命令；重新运行，则客户端文件夹内容将被主服务器文件夹内容覆盖；所以建议源文件夹作为服务端。<br>nfs源文件在服务器端，如果设计大量读取请求，则必须让请求直接访问nfs服务器端，而不是访问nfs客户端。所以建议下载服务器端作为服务器端。</p>
 <h3 id="查询本机所有mount信息："><a href="#查询本机所有mount信息：" class="headerlink" title="查询本机所有mount信息："></a>查询本机所有mount信息：</h3><p>  mount</p>
-<p>转载请注明出处 <a href="http://lixinnnnnn.github.io/2017/03/15/nfs安装与配置/">http://lixinnnnnn.github.io/2017/03/15/nfs安装与配置/</a> </p>
+<p>转载请注明出处 <a href="http://www.justli.xyz/2017/03/15/nfs安装与配置/">http://www.justli.xyz/2017/03/15/nfs安装与配置/</a> </p>
 ]]></content>
     
     <summary type="html">
@@ -99,17 +99,17 @@
     
     </summary>
     
-      <category term="linux" scheme="http://lixinnnnnn.github.io/categories/linux/"/>
+      <category term="linux" scheme="http://www.justli.xyz/categories/linux/"/>
     
     
-      <category term="nfs" scheme="http://lixinnnnnn.github.io/tags/nfs/"/>
+      <category term="nfs" scheme="http://www.justli.xyz/tags/nfs/"/>
     
   </entry>
   
   <entry>
     <title>apache安装</title>
-    <link href="http://lixinnnnnn.github.io/2017/03/15/apache%E5%AE%89%E8%A3%85/"/>
-    <id>http://lixinnnnnn.github.io/2017/03/15/apache安装/</id>
+    <link href="http://www.justli.xyz/2017/03/15/apache%E5%AE%89%E8%A3%85/"/>
+    <id>http://www.justli.xyz/2017/03/15/apache安装/</id>
     <published>2017-03-15T05:41:05.000Z</published>
     <updated>2017-03-15T05:47:58.000Z</updated>
     
@@ -129,7 +129,7 @@
 <p>otauser@OTA:~/pcre-8.37$ make install</p>
 <h3 id="3-9安装成功"><a href="#3-9安装成功" class="headerlink" title="3.9安装成功"></a>3.9安装成功</h3><p>otauser@OTA:~/httpd-2.4.18$ ./configure –prefix=/app/apache-2.4.18 –with-apr=/app/apr-1.5.2/ –with-apr-util=/app/apr-util-1.5.4/ –with-pcre=/app/pcre-8.37<br>otauser@OTA:~/httpd-2.4.18$ make<br>otauser@OTA:~/httpd-2.4.18$ make install</p>
 <h3 id="3-10启动、关闭apache-的命令"><a href="#3-10启动、关闭apache-的命令" class="headerlink" title="3.10启动、关闭apache 的命令"></a>3.10启动、关闭apache 的命令</h3><p>/app/apache-2.4.18/bin/apachectl start<br>/app/apache-2.4.18/bin/apachectl stop</p>
-<p>转载请注明出处 <a href="http://lixinnnnnn.github.io/2017/03/15/apache安装/">http://lixinnnnnn.github.io/2017/03/15/apache安装/</a> </p>
+<p>转载请注明出处 <a href="http://www.justli.xyz/2017/03/15/apache安装/">http://www.justli.xyz/2017/03/15/apache安装/</a> </p>
 ]]></content>
     
     <summary type="html">
@@ -138,22 +138,22 @@
     
     </summary>
     
-      <category term="linux" scheme="http://lixinnnnnn.github.io/categories/linux/"/>
+      <category term="linux" scheme="http://www.justli.xyz/categories/linux/"/>
     
     
-      <category term="apache" scheme="http://lixinnnnnn.github.io/tags/apache/"/>
+      <category term="apache" scheme="http://www.justli.xyz/tags/apache/"/>
     
   </entry>
   
   <entry>
     <title>jdk安装</title>
-    <link href="http://lixinnnnnn.github.io/2017/03/15/jdk%E5%AE%89%E8%A3%85/"/>
-    <id>http://lixinnnnnn.github.io/2017/03/15/jdk安装/</id>
+    <link href="http://www.justli.xyz/2017/03/15/jdk%E5%AE%89%E8%A3%85/"/>
+    <id>http://www.justli.xyz/2017/03/15/jdk安装/</id>
     <published>2017-03-15T05:38:41.000Z</published>
     <updated>2017-03-15T05:47:22.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="jdk安装"><a href="#jdk安装" class="headerlink" title="jdk安装"></a>jdk安装</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">otauser@OTA:~$ tar zxf jdk-8u73-linux-x64.gz</div><div class="line">otauser@OTA:~$ cd /app</div><div class="line">otauser@OTA:/app$ cp -r /home/otauser/jdk1.8.0_73/ .</div><div class="line"></div><div class="line">otauser@OTA:/app$ sudo su</div><div class="line">root@OTA:/app$ vi /etc/profile</div><div class="line"></div><div class="line"># java env</div><div class="line">vi /etc/profile</div><div class="line">export JAVA_HOME=/app/jdk1.8.0_73</div><div class="line">export JRE_HOME=/app/jdk1.8.0_73/jre</div><div class="line">export PATH=$PATH:/app/jdk1.8.0_73/bin</div><div class="line">export CLASSPATH=./:/app/jdk1.8.0_73/lib:/app/jdk1.8.0_73/jre/lib</div><div class="line">source /etc/profile</div></pre></td></tr></table></figure>
-<p>转载请注明出处 <a href="http://lixinnnnnn.github.io/2017/03/15/jdk安装/">http://lixinnnnnn.github.io/2017/03/15/jdk安装/</a> </p>
+<p>转载请注明出处 <a href="http://www.justli.xyz/2017/03/15/jdk安装/">http://www.justli.xyz/2017/03/15/jdk安装/</a> </p>
 ]]></content>
     
     <summary type="html">
@@ -162,17 +162,17 @@
     
     </summary>
     
-      <category term="linux" scheme="http://lixinnnnnn.github.io/categories/linux/"/>
+      <category term="linux" scheme="http://www.justli.xyz/categories/linux/"/>
     
     
-      <category term="jdk" scheme="http://lixinnnnnn.github.io/tags/jdk/"/>
+      <category term="jdk" scheme="http://www.justli.xyz/tags/jdk/"/>
     
   </entry>
   
   <entry>
     <title>shell脚本语言</title>
-    <link href="http://lixinnnnnn.github.io/2017/03/15/shell%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80/"/>
-    <id>http://lixinnnnnn.github.io/2017/03/15/shell脚本语言/</id>
+    <link href="http://www.justli.xyz/2017/03/15/shell%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80/"/>
+    <id>http://www.justli.xyz/2017/03/15/shell脚本语言/</id>
     <published>2017-03-15T03:45:36.000Z</published>
     <updated>2017-03-15T05:47:38.000Z</updated>
     
@@ -213,7 +213,7 @@
 <p>例子：定时删除多少天之前的文件<br>1、新建文件夹hello.sh并给予运行权限，并在其中输入以下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#！/bin/bash</div><div class="line">dir=/app/webContent/ems-admin/logs/</div><div class="line">find $&#123;dir&#125; -mtime +1 -type f|xargs rm -f</div></pre></td></tr></table></figure></p>
 <p>${dir}为路径<br>-mtime +1 是设置时间为1天前<br>-type f表示删除的是文件<br>“|”为管道，连接一个命令的标准输出和另一个命令的标准输入。<br>xargs可以通过管道传递参数，作用是将参数列表转换成小块分段传递给其他命令。<br>2、建立定时任务<br>使用命令crontab -e编辑定时任务。加上以下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">*/1 * * * * /app/test/shellcode/hello.sh</div></pre></td></tr></table></figure></p>
 <p>每分钟运行一次hello.sh文件。</p>
-<p>转载请注明出处 <a href="http://lixinnnnnn.github.io/2017/03/15/shell脚本语言/">http://lixinnnnnn.github.io/2017/03/15/shell脚本语言/</a> </p>
+<p>转载请注明出处 <a href="http://www.justli.xyz/2017/03/15/shell脚本语言/">http://www.justli.xyz/2017/03/15/shell脚本语言/</a> </p>
 ]]></content>
     
     <summary type="html">
@@ -223,17 +223,17 @@
     
     </summary>
     
-      <category term="linux" scheme="http://lixinnnnnn.github.io/categories/linux/"/>
+      <category term="linux" scheme="http://www.justli.xyz/categories/linux/"/>
     
     
-      <category term="shell" scheme="http://lixinnnnnn.github.io/tags/shell/"/>
+      <category term="shell" scheme="http://www.justli.xyz/tags/shell/"/>
     
   </entry>
   
   <entry>
     <title>整理下用过的js插件</title>
-    <link href="http://lixinnnnnn.github.io/2016/12/29/%E6%95%B4%E7%90%86%E4%B8%8B%E7%94%A8%E8%BF%87%E7%9A%84js%E6%8F%92%E4%BB%B6/"/>
-    <id>http://lixinnnnnn.github.io/2016/12/29/整理下用过的js插件/</id>
+    <link href="http://www.justli.xyz/2016/12/29/%E6%95%B4%E7%90%86%E4%B8%8B%E7%94%A8%E8%BF%87%E7%9A%84js%E6%8F%92%E4%BB%B6/"/>
+    <id>http://www.justli.xyz/2016/12/29/整理下用过的js插件/</id>
     <published>2016-12-29T13:21:05.000Z</published>
     <updated>2017-03-15T03:44:10.000Z</updated>
     
@@ -257,7 +257,7 @@ This is my textarea to be replaced with CKEditor.
 
 
 
-<p>转载请注明出处 <a href="http://lixinnnnnn.github.io/2016/12/29/整理下用过的js插件/">http://lixinnnnnn.github.io/2016/12/29/整理下用过的js插件/</a> </p>
+<p>转载请注明出处 <a href="http://www.justli.xyz/2016/12/29/整理下用过的js插件/">http://www.justli.xyz/2016/12/29/整理下用过的js插件/</a> </p>
 ]]></content>
     
     <summary type="html">
@@ -267,17 +267,17 @@ This is my textarea to be replaced with CKEditor.
     
     </summary>
     
-      <category term="js" scheme="http://lixinnnnnn.github.io/categories/js/"/>
+      <category term="js" scheme="http://www.justli.xyz/categories/js/"/>
     
     
-      <category term="js" scheme="http://lixinnnnnn.github.io/tags/js/"/>
+      <category term="js" scheme="http://www.justli.xyz/tags/js/"/>
     
   </entry>
   
   <entry>
     <title>markdown语法简介</title>
-    <link href="http://lixinnnnnn.github.io/2016/12/21/markdown%E8%AF%AD%E6%B3%95%E7%AE%80%E4%BB%8B/"/>
-    <id>http://lixinnnnnn.github.io/2016/12/21/markdown语法简介/</id>
+    <link href="http://www.justli.xyz/2016/12/21/markdown%E8%AF%AD%E6%B3%95%E7%AE%80%E4%BB%8B/"/>
+    <id>http://www.justli.xyz/2016/12/21/markdown语法简介/</id>
     <published>2016-12-21T08:10:17.000Z</published>
     <updated>2016-12-21T10:46:48.000Z</updated>
     
@@ -321,7 +321,7 @@ This is my textarea to be replaced with CKEditor.
 </table>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p> 如果你是个程序猿，需要在文章里优雅的引用代码框，在Markdown下实现也非常简单，只需要用两个 ` 把中间的代码包裹起来。缩进用<code>tab</code>键。一段代码用```+语言名称进行标记。<br> 例如：<br> ``` java<br>public class HelloWorld(){<br>    private void print(String s){<br>        System.out.print(s);<br>    }<br>}<br>```<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> class <span class="title">HelloWorld</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(String s)</span></span>&#123;</div><div class="line">        System.out.print(s);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>分割线的语法只需要三个 <code>*</code> 号<br>转义字符\</p>
-<p>转载请注明出处 <a href="http://lixinnnnnn.github.io/2016/12/21/markdown语法简介/">http://lixinnnnnn.github.io/2016/12/21/markdown语法简介/</a> </p>
+<p>转载请注明出处 <a href="http://www.justli.xyz/2016/12/21/markdown语法简介/">http://www.justli.xyz/2016/12/21/markdown语法简介/</a> </p>
 ]]></content>
     
     <summary type="html">
@@ -330,17 +330,17 @@ This is my textarea to be replaced with CKEditor.
     
     </summary>
     
-      <category term="study" scheme="http://lixinnnnnn.github.io/categories/study/"/>
+      <category term="study" scheme="http://www.justli.xyz/categories/study/"/>
     
     
-      <category term="markdown" scheme="http://lixinnnnnn.github.io/tags/markdown/"/>
+      <category term="markdown" scheme="http://www.justli.xyz/tags/markdown/"/>
     
   </entry>
   
   <entry>
     <title>hello world</title>
-    <link href="http://lixinnnnnn.github.io/2016/12/20/hello-world/"/>
-    <id>http://lixinnnnnn.github.io/2016/12/20/hello-world/</id>
+    <link href="http://www.justli.xyz/2016/12/20/hello-world/"/>
+    <id>http://www.justli.xyz/2016/12/20/hello-world/</id>
     <published>2016-12-20T07:54:47.000Z</published>
     <updated>2016-12-21T02:26:38.000Z</updated>
     
@@ -353,7 +353,7 @@ This is my textarea to be replaced with CKEditor.
 <h3 id="关于博客"><a href="#关于博客" class="headerlink" title="关于博客"></a>关于博客</h3><blockquote>
 <p>万事开头难，这个博客现在还在起步阶段，各种功能还没有加上，以后慢慢会加上。<br>还要特别感谢Yelee主题的制作者MOxFIVE ,以后主题的风格可能会换。<br>本博客的名称叫localhost，平时自己在做web项目的时候喜欢敲localhost而不是127.0.0.1,也算是以自己的习惯命名吧。</p>
 </blockquote>
-<p>转载请注明出处 <a href="http://lixinnnnnn.github.io/2016/12/20/hello-world/">http://lixinnnnnn.github.io/2016/12/20/hello-world/</a> </p>
+<p>转载请注明出处 <a href="http://www.justli.xyz/2016/12/20/hello-world/">http://www.justli.xyz/2016/12/20/hello-world/</a> </p>
 ]]></content>
     
     <summary type="html">
@@ -365,10 +365,10 @@ This is my textarea to be replaced with CKEditor.
     
     </summary>
     
-      <category term="hello world" scheme="http://lixinnnnnn.github.io/categories/hello-world/"/>
+      <category term="hello world" scheme="http://www.justli.xyz/categories/hello-world/"/>
     
     
-      <category term="hello world" scheme="http://lixinnnnnn.github.io/tags/hello-world/"/>
+      <category term="hello world" scheme="http://www.justli.xyz/tags/hello-world/"/>
     
   </entry>
   
